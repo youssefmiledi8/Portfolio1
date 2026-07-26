@@ -152,27 +152,6 @@
 </footer>
 
 <script>
-  // cipher-style scramble reveal for the hero title
-  const el = document.getElementById('heroTitle');
-  const target = el.textContent;
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01#$%";
-  let frame = 0;
-  const totalFrames = 24;
-  function scramble(){
-    let out = "";
-    for(let i=0;i<target.length;i++){
-      if(target[i] === " "){ out += " "; continue; }
-      const revealPoint = (i/target.length) * totalFrames;
-      if(frame > revealPoint){ out += target[i]; }
-      else{ out += chars[Math.floor(Math.random()*chars.length)]; }
-    }
-    el.textContent = out;
-    frame++;
-    if(frame <= totalFrames + 4){ requestAnimationFrame(()=>setTimeout(scramble, 35)); }
-    else{ el.innerHTML = 'Youssef Miledi <span class="accent">::</span> Étudiant en Technologies de l\'Information et de la Communication à l\'ENET\'COM'; }
-  }
-  scramble();
-
   const io = new IntersectionObserver(entries=>{
     entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
   }, {threshold:0.15});
